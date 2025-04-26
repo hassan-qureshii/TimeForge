@@ -1,0 +1,64 @@
+*{
+  padding:0%;
+  margin:0%;
+  box-sizing:border-box;
+}
+
+body {
+  background:url('./assets/Bg-image.avif');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: Arial, sans-serif;
+  color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.heading{
+  text-align:center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.time-display {
+  font-size: 40px;
+  font-weight: bold;
+  color:whitesmoke;
+  padding:40px 70px 10px ;
+  border-radius:5px;
+  margin-bottom: 20px;
+  display: inline-block;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+button {
+  width:110px;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.start-stop {
+  background:black;
+  color: white;
+}
+
+.reset {
+  background:black;
+  color: white;
+}
+
+.hu__hu__ { animation: hu__hu__ infinite 2s ease-in-out }
+@keyframes hu__hu__ {
+    50% { transform: translateY(5px); transition:tranform 0.5s ease-in-out;}
+}
