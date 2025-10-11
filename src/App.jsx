@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FaPlay, FaPause, FaRedo, FaFlagCheckered } from "react-icons/fa";
 import "./App.css";
 
 function App() {
@@ -33,17 +34,29 @@ function App() {
 
   return (
     <div className="stopwatch-container">
-      <h1 className="heading hu__hu__">Stop Watch</h1>
+      <h1 className="heading hu__hu__">⏱️ Stop Watch</h1>
       <div className="time-display">{formatTime(time)}</div>
       <div className="buttons">
-        <button onClick={() => setIsRunning(!isRunning)} className="start-stop">
-          {isRunning ? "Pause" : "Start"}
+        <button
+          onClick={() => setIsRunning(!isRunning)}
+          className={`start-stop ${isRunning ? "pause" : "start"}`}
+        >
+          {isRunning ? <FaPause /> : <FaPlay />} {isRunning ? "Pause" : "Start"}
         </button>
-        <button onClick={() => { setTime(0); setIsRunning(false); setLaps([]); }} className="reset">
-          Reset
+
+        <button
+          onClick={() => {
+            setTime(0);
+            setIsRunning(false);
+            setLaps([]);
+          }}
+          className="reset"
+        >
+          <FaRedo /> Reset
         </button>
+
         <button onClick={handleLap} className="lap-btn">
-          Lap
+          <FaFlagCheckered /> Lap
         </button>
       </div>
 
