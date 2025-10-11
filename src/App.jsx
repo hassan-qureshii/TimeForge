@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import "./App.css"; 
+import "./App.css";
 
-function Stopwatch() {
+function App() {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [laps, setLaps] = useState([]);
 
   useEffect(() => {
     let timer;
@@ -24,27 +25,39 @@ function Stopwatch() {
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:${String(ms).padStart(2, "0")}`;
   };
 
+  const handleLap = () => {
+    if (isRunning) {
+      setLaps((prev) => [...prev, formatTime(time)]);
+    }
+  };
+
   return (
-    <div className="stopwatch-container" >
-     <h1 className="heading"  class="cssanimation hu__hu__">Stop Watch</h1>
+    <div className="stopwatch-container">
+      <h1 className="heading hu__hu__">Stop Watch</h1>
       <div className="time-display">{formatTime(time)}</div>
       <div className="buttons">
-        <button 
-          onClick={() => setIsRunning(!isRunning)}
-          className="start-stop"
-        >
+        <button onClick={() => setIsRunning(!isRunning)} className="start-stop">
           {isRunning ? "Pause" : "Start"}
         </button>
-        <button 
-          onClick={() => { setTime(0); setIsRunning(false); }}
-          className="reset"
-        >
+        <button onClick={() => { setTime(0); setIsRunning(false); setLaps([]); }} className="reset">
           Reset
         </button>
+        <button onClick={handleLap} className="lap-btn">
+          Lap
+        </button>
       </div>
+
+      {laps.length > 0 && (
+        <ul className="lap-list">
+          {laps.map((lap, index) => (
+            <li key={index}>
+              Lap {index + 1}: <span>{lap}</span>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 }
 
-
-export default Stopwatch
+export default App;
