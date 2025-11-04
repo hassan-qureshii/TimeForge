@@ -23,7 +23,10 @@ function App() {
     const minutes = Math.floor(milliseconds / 60000);
     const seconds = Math.floor((milliseconds % 60000) / 1000);
     const ms = (milliseconds % 1000) / 10;
-    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}:${String(ms).padStart(2, "0")}`;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(
+      2,
+      "0"
+    )}:${String(ms).padStart(2, "0")}`;
   };
 
   const handleLap = () => {
@@ -34,7 +37,7 @@ function App() {
 
   return (
     <div className="stopwatch-container">
-      <h1 className="heading hu__hu__">⏱️ Stop Watch</h1>
+      <h1 className="heading">Stop Watch</h1>
       <div className="time-display">{formatTime(time)}</div>
       <div className="buttons">
         <button
