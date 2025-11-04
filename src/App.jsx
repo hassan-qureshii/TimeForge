@@ -79,7 +79,7 @@ function App() {
 
       {/* ✅ Footer Section */}
       <footer className="footer">
-        ⏱️ Developed by <span className="footer-name">Hassan Qureshi</span> ©{" "}
+        Developed by <span className="footer-name">Akbar Qureshi</span> ©{" "}
         {new Date().getFullYear()}
       </footer>
     </div>
