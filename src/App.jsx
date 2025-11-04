@@ -38,7 +38,7 @@ function App() {
   return (
     <div className="app-wrapper">
       <div className="stopwatch-container">
-        <h1 className="heading">Stop Watch</h1>
+        <h1 className="heading">TimeForge</h1>
         <div className="time-display">{formatTime(time)}</div>
 
         <div className="buttons">
