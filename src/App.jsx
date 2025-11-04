@@ -36,42 +36,52 @@ function App() {
   };
 
   return (
-    <div className="stopwatch-container">
-      <h1 className="heading">Stop Watch</h1>
-      <div className="time-display">{formatTime(time)}</div>
-      <div className="buttons">
-        <button
-          onClick={() => setIsRunning(!isRunning)}
-          className={`start-stop ${isRunning ? "pause" : "start"}`}
-        >
-          {isRunning ? <FaPause /> : <FaPlay />} {isRunning ? "Pause" : "Start"}
-        </button>
+    <div className="app-wrapper">
+      <div className="stopwatch-container">
+        <h1 className="heading">Stop Watch</h1>
+        <div className="time-display">{formatTime(time)}</div>
 
-        <button
-          onClick={() => {
-            setTime(0);
-            setIsRunning(false);
-            setLaps([]);
-          }}
-          className="reset"
-        >
-          <FaRedo /> Reset
-        </button>
+        <div className="buttons">
+          <button
+            onClick={() => setIsRunning(!isRunning)}
+            className={`start-stop ${isRunning ? "pause" : "start"}`}
+          >
+            {isRunning ? <FaPause /> : <FaPlay />}{" "}
+            {isRunning ? "Pause" : "Start"}
+          </button>
 
-        <button onClick={handleLap} className="lap-btn">
-          <FaFlagCheckered /> Lap
-        </button>
+          <button
+            onClick={() => {
+              setTime(0);
+              setIsRunning(false);
+              setLaps([]);
+            }}
+            className="reset"
+          >
+            <FaRedo /> Reset
+          </button>
+
+          <button onClick={handleLap} className="lap-btn">
+            <FaFlagCheckered /> Lap
+          </button>
+        </div>
+
+        {laps.length > 0 && (
+          <ul className="lap-list">
+            {laps.map((lap, index) => (
+              <li key={index}>
+                Lap {index + 1}: <span>{lap}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
 
-      {laps.length > 0 && (
-        <ul className="lap-list">
-          {laps.map((lap, index) => (
-            <li key={index}>
-              Lap {index + 1}: <span>{lap}</span>
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* ✅ Footer Section */}
+      <footer className="footer">
+        ⏱️ Developed by <span className="footer-name">Hassan Qureshi</span> ©{" "}
+        {new Date().getFullYear()}
+      </footer>
     </div>
   );
 }
